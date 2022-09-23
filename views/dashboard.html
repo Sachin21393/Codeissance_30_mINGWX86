@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="home.css">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style media="screen">
+      body{
+        font-style: Times;
+      }
+
+      .center1{
+        width:400px !important;
+        height: auto;
+      }
+      .center2{
+        width:400px !important;
+        height: auto;
+      }
+      body{
+  margin: 0;
+  padding:0;
+}
+
+
+
+
+
+/* div.polaroid1 {
+  margin-left: 5%;
+  width: 90%;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+} */
+div.polaroid2 {
+
+  margin-top:5%;
+  margin-bottom:5%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-bottom: 5%;
+
+
+}
+img{
+  padding:  5% !important;
+  /* padding-right: 5% !important; */
+
+}
+hr{
+  padding: 0;
+  margin:0;
+}
+
+
+h2{
+  text-align: center;
+}
+p{
+  text-align: justify;
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+
+}
+h6{
+  margin-left: 24%;
+}
+.heading{
+  margin-top: 3%;
+  margin-bottom: 4%;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg " style="background:black">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#" > <img src="logo.png" alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link nav-link1" href="#">Find Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link1" href="#">Create Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link1" href="#">Find Friends</a>
+        </li>
+
+
+
+      </ul>
+
+    </div>
+    </div>
+    </nav>
+
+
+
+
+<section>
+
+  <div class="heading" >
+    <h1 style="text-align: center;padding-top 5% !important;" onmouseup="getSelectedText()">Event Name</h1>
+  </div>
+
+
+
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-6">
+      <div class="row polaroid2">
+        <p></p><br>
+
+      <!-- <h4 style="margin-left:3%"></h4> -->
+
+      <img src="data:item/<%=item.hospitalimage.contentType%>;base64,  <%=item.hospitalimage.data.toString('base64')%>">
+
+       <p></p>
+
+
+
+
+
+         <div class="container">
+          <button type="button" name="button" class="btn" style="padding: 1.5%;margin-left: 2.5%;background-color: #00B4D8">Register</button>
+         </div>
+         <p></p>
+
+
+      </div>
+      <div class="row polaroid2" >
+        <p></p><br>
+      <h2 onmouseup="getSelectedText()">Description</h2>
+
+      <hr>
+
+
+      <div class="container-fluid" style="text-align:justify;margin-top:3%">
+        <p>Description</p>
+      </div>
+
+
+
+      </div>
+
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-3" style="margin-top: 1%;">
+      <div class="row polaroid2" style="padding: 5%;text-align:center;">
+        <h5>Date: </h5>
+
+      </div>
+      <div class="row polaroid2" style="padding: 5%;text-align:center;">
+          <h5>Venue:</h5>
+          <h5>City:</h5>
+
+
+      </div>
+
+      <div class="row polaroid2" style="padding-top: 7%;text-align:center;">
+          <h5>Mode:</h5>
+      </div>
+      <div class="row polaroid2" style="padding-top: 7%;text-align:center;">
+          <h5>Atendees:</h5>
+      </div>
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+</div>
+
+</section>
+  <div class="hid" style="visibility: hidden;">
+   Select Voice: <select id='voiceList'></select> <br><br>
+<form name="testform">
+			<textarea name="selectedtext"
+					rows="5"
+					cols="20" id='txtInput' type="hidden"></textarea>
+		</form>
+  </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+</body>
+<script>
+  var txtInput = document.querySelector('#txtInput');
+  var voiceList = document.querySelector('#voiceList');
+  var btnSpeak = document.querySelector('#btnSpeak');
+  var synth = window.speechSynthesis;
+  var voices = [];
+
+  PopulateVoices();
+  if(speechSynthesis !== undefined){
+      speechSynthesis.onvoiceschanged = PopulateVoices;
+  }
+
+  btnSpeak.addEventListener('click', ()=> {
+      var toSpeak = new SpeechSynthesisUtterance(txtInput.value);
+      var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+      voices.forEach((voice)=>{
+          if(voice.name === selectedVoiceName){
+              toSpeak.voice = voice;
+          }
+      });
+      synth.speak(toSpeak);
+  });
+
+  function PopulateVoices(){
+      voices = synth.getVoices();
+      var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
+      voiceList.innerHTML = '';
+      voices.forEach((voice)=>{
+          var listItem = document.createElement('option');
+          listItem.textContent = voice.name;
+          listItem.setAttribute('data-lang', voice.lang);
+          listItem.setAttribute('data-name', voice.name);
+          voiceList.appendChild(listItem);
+      });
+
+      voiceList.selectedIndex = selectedIndex;
+  }
+
+</script>
+<script>
+  // Function to get the Selected Text
+  function getSelectedText() {
+    var selectedText = '';
+
+    // window.getSelection
+    if (window.getSelection) {
+      selectedText = window.getSelection();
+    }
+    // document.getSelection
+    else if (document.getSelection) {
+      selectedText = document.getSelection();
+    }
+    // document.selection
+    else if (document.selection) {
+      selectedText =
+      document.selection.createRange().text;
+    } else return;
+    // To write the selected text into the textarea
+    document.testform.selectedtext.value = selectedText;
+  }
+</script>
+</html>

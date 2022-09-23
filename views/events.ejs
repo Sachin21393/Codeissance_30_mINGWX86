@@ -57,7 +57,7 @@ padding: 10px;
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px; 
+  padding: 20px;
   font-size: 30px;
 
 }
@@ -143,25 +143,30 @@ padding: 10px;
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
     <div class="container">
         <div class="grid-container" style="text-decoration:none ;">
-
+<% let i=0 %>
           <% data.forEach(function(item){ %>
+
         <a href="<%=item.ticketinfo%>" style="text-decoration:none;" ><div class="grid-item" >
           <input type="hidden" value="<%=item._id%>">
-              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
-              <h2 style="padding-top: 5%"><%=item.title%>
-                 <span style="margin-left: 52%;">
-                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
-                 <span style="font-size: 1.5rem !important;"> 4.5</span>
-               </span>
-             </h2>
-              <h6><%=item.date%>,<%=item.time%></h6>
+
+            <img src="<%=images[i]%>" alt="" class="image"  >
+
+
+              <h4 style="padding-top: 5%"><%=item.title%>
+
+             </h4>
+              <h6><%=item.date%>,<%=item.time%><span style="margin-left: 1%;font-size: 1.5rem">
+                <i class="fas fa-arrow-right"></i>
+              </span></h6>
+
               <div class="" style="font-size: 1.5rem !important;" >
                 <span style="font-size: 1.2rem !important; " id="city"><%=item.city%></span>
               </div>
           </div>
         </a>
+        <% i++ %>
       <% }) %>
-         
+
 
 
 
@@ -180,8 +185,8 @@ padding: 10px;
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  
-  
+
+
   </body>
 
 </html>

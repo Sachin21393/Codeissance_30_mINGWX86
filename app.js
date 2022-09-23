@@ -10,7 +10,7 @@ const multer=require("multer");
 const nodemailer = require('nodemailer');
 const SerpApi = require('google-search-results-nodejs');
 const search = new SerpApi.GoogleSearch("b5141c80f9eeaefc7b0d0cfe929f036921829eb37d6d4120a6f69a9dd6b1af38");
-var twilio=require('twilio');   
+var twilio=require('twilio');
 var accountSid = "ACb8151fa1fb3b5e26dd8ee751caffe8cf"; // Your Account SID from www.twilio.com/console
 var authToken ="3993072d2e46406a1fabfc209ab41c90";
 
@@ -25,6 +25,7 @@ const transporter = nodemailer.createTransport({
       pass: "Eventic21@#",
     },
 });
+const images = ['https://images.unsplash.com/photo-1546146830-2cca9512c68e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80','https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmd8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1561152820-340780bc049e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZ3JhbW1pbmd8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1493119508027-2b584f234d6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVjaHxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dGVjaHxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1640231912426-0d5feab0b9f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHRlY2h8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1624465991603-ea7793b4fc7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHRlY2h8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1641951820920-c90394aef512?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTl8fHRlY2h8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1632383380286-80f79eb1bae1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29uZmVyZW5jZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1573779834530-984815d8999c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29uZmVyZW5jZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1555474488-d2282fe0593f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29uZmVyZW5jZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1637979909766-ccf55518a928?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y29uZmVyZW5jZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1603975711481-18b7aaca4caa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d29ya3Nob3B8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1572028412480-0a75271c6bb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d29ya3Nob3B8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60']
 
 
 function exportMail(receiver, subject, html){
@@ -99,7 +100,11 @@ app.get('/events',(req,res)=>{
     Events.find({},(er,data)=>{
         if(er) console.log(er);
         else{
-            res.render('events',{data:data});
+            res.render('events',{
+              data:data,
+              images : images
+
+            });
         }
     })
 })
@@ -114,8 +119,8 @@ app.post('/hostEvent',upload.single('image'),(req,res,next)=>{
         date:req.body.date,
         time:req.body.time,
         description:req.body.description,
-        
-      
+
+
         amount:req.body.amount,
         address:req.body.address,
         img:{
@@ -135,7 +140,7 @@ app.post('/hostEvent',upload.single('image'),(req,res,next)=>{
     })
 })
 app.post('/filter',(req,res)=>{
-  
+
     let interest=req.body.interest;
     let city=req.body.city;
     if(interest!=""){
@@ -160,9 +165,9 @@ app.post('/filter',(req,res)=>{
             }
         })
     }
- 
-    
-    
+
+
+
 })
 
 app.post('/signup',(req,res)=>{
@@ -189,7 +194,7 @@ Events.findOneAndUpdate({_id:event_id},{$push:{users:temp_id}},(er,data)=>{
  return res.json({
     obj:data
  })
- })    
+ })
 });
 let event_id;
 app.post('/userlist',(req,res)=>{  // list to check user for particular event
@@ -238,7 +243,7 @@ app.get('/scrap',(req,res)=>{
         gl: "us",
         hl: "en"
       };
-      
+
       const callback = function(data) {
         console.log("Start");
         scrap=data["events_results"];
@@ -263,13 +268,13 @@ let n=scrap.length;
 for(let i=0;i<n;i++){
 
     let obj=new Events({
-    
+
         title:scrap[i].title,
-       
+
         date:scrap[i].date.when,
-      
+
         description:scrap[i].description,
-      
+
         // amount:req.body.amount,
         address:scrap[i].address[0],
         // link:scrap[i].venue.link!=""?scrap[i].venue.link:"",
@@ -277,34 +282,34 @@ for(let i=0;i<n;i++){
     })
     obj.save();
     // console.log(scrap[i]);
-   
+
     //    console.log(scrap[i].title);
     //    console.log(scrap[i].address[0]);
     //    console.log(scrap[i].link);
-    
-   
+
+
     //    console.log(scrap[i].date.when)
     //    console.log(scrap[i].description)
     //    console.log(scrap[i].ticket_info[0].link)
     //    console.log(scrap[i].venue.name)
     //    console.log(scrap[i].venue.rating)
     //    console.log(scrap[i].venue.link)
-       
 
 
-    
+
+
 
 }
 
       };
-      
+
       // Show result as JSON
       search.json(params, callback);
-      
+
       axios.get('https://serpapi.com/search.json?q=events+in+Austin&google_domain=google.com&gl=us&hl=en')
         .then(res => {
-      
-      
+
+
         })
         .catch(error => {
           console.log("hello");
@@ -342,7 +347,7 @@ app.get("/confirm_appointment", async (req,res) => {
 
 
 
-    
+
 })
 
 app.listen(80,()=>{
