@@ -1,6 +1,9 @@
 const express=require('express');
 const app=express();
 const ejs=require('ejs');
+const path=require("path")
+// var unirest = require("unirest");
+const fs = require('fs');
 const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 const multer=require("multer");
@@ -58,6 +61,8 @@ const eventSchema={
     time:String,
     description:String,
     link:String,
+    address:String,
+    ticketinfo:String,
    users:[String],
     amount:String,
     img:{
@@ -77,19 +82,52 @@ let id;
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
-
+var storage5=multer.diskStorage({
+	destination:(req,file,cb)=>{
+		cb(null,'uploads')
+	},
+	filename:(req,file,cb)=>{
+cb(null,file.fieldname+"-"+Date.now())
+	}
+});
+var upload=multer({storage: storage5})
 
 app.get('/',(req,res)=>{
     res.send("hjo");
 })
 app.get('/events',(req,res)=>{
-    res.render('events')
+    Events.find({},(er,data)=>{
+        if(er) console.log(er);
+        else{
+            res.render('events',{data:data});
+        }
+    })
 })
-app.post('/hostEvent',(req,res)=>{
-    let description=req.body.description;
+app.get('/eventform',(req,res)=>{
+    res.render('hostevent')
+})
+app.post('/hostEvent',upload.single('image'),(req,res,next)=>{
     let obj=new Events({
-        description:description,
-        city:req.body.city
+        admin:req.body.name,
+        title:req.body.title,
+        city:req.body.title,
+        date:req.body.date,
+        time:req.body.time,
+        description:req.body.description,
+        
+      
+        amount:req.body.amount,
+        address:req.body.address,
+        img:{
+
+			data:fs.readFileSync(path.join(__dirname+'/uploads/'+req.file.filename)),
+		contentType:'image/png'
+		},
+        capacity:req.body.capacity,
+        mode:req.body.mode,
+
+
+
     })
     obj.save();
     return res.json({
@@ -219,8 +257,23 @@ let n=scrap.length;
 // capacity:String,
 // mode:String,
 // participating:[String] // csv
-console.log(scrap);
+// console.log(scrap);
 for(let i=0;i<n;i++){
+
+    let obj=new Events({
+    
+        title:scrap[i].title,
+       
+        date:scrap[i].date.when,
+      
+        description:scrap[i].description,
+      
+        // amount:req.body.amount,
+        address:scrap[i].address[0],
+        // link:scrap[i].venue.link!=""?scrap[i].venue.link:"",
+     ticketinfo:scrap[i].ticket_info[0].link!=""?scrap[i].ticket_info[0].link:""
+    })
+    obj.save();
     // console.log(scrap[i]);
    
     //    console.log(scrap[i].title);
