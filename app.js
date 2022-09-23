@@ -92,9 +92,9 @@ cb(null,file.fieldname+"-"+Date.now())
 });
 var upload=multer({storage: storage5})
 
-app.get('/',(req,res)=>{
-    res.send("hjo");
-})
+// app.get('/',(req,res)=>{
+//     res.send("hjo");
+// })
 app.get('/events',(req,res)=>{
     Events.find({},(er,data)=>{
         if(er) console.log(er);
@@ -209,7 +209,9 @@ app.post('/accept',(req,res)=>{
     })
 })
 
-
+app.get('/',(req,res)=>{
+    res.render('home')
+})
 
 app.post('/login',(req,res)=>{
     let email=req.body.email;
