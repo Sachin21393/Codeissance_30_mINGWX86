@@ -82,6 +82,9 @@ app.use(express.static('public'));
 app.get('/',(req,res)=>{
     res.send("hjo");
 })
+app.get('/events',(req,res)=>{
+    res.render('events')
+})
 app.post('/hostEvent',(req,res)=>{
     let description=req.body.description;
     let obj=new Events({
