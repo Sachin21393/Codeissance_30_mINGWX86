@@ -169,7 +169,17 @@ app.post('/filter',(req,res)=>{
 
 
 })
+let event_id;
+app.post('/part',(req,res)=>{
+    event_id=req.body._id;
+    Events.findById(part_id,(er,data)=>{
+        if(er) console.log(er);
+        else{
 
+            res.render('dashboard',{data:data})
+        }
+    })
+})
 app.post('/signup',(req,res)=>{
     let obj=new User({
         name:req.body.name,
@@ -196,7 +206,7 @@ Events.findOneAndUpdate({_id:event_id},{$push:{users:temp_id}},(er,data)=>{
  })
  })
 });
-let event_id;
+// let event_id;
 app.post('/userlist',(req,res)=>{  // list to check user for particular event
 event_id=req.body._id;
 return res.json({

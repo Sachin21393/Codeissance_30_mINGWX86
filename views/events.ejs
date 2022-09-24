@@ -147,7 +147,7 @@ padding: 10px;
           <% data.forEach(function(item){ %>
 
         <a href="<%=item.ticketinfo%>" style="text-decoration:none;" ><div class="grid-item" >
-          <input type="hidden" value="<%=item._id%>">
+         
 
             <img src="<%=images[i]%>" alt="" class="image"  >
 
@@ -156,14 +156,18 @@ padding: 10px;
 
              </h4>
               <h6><%=item.date%>,<%=item.time%><span style="margin-left: 1%;font-size: 1.5rem">
-                <i class="fas fa-arrow-right"></i>
+              </a>
+                <form action="/part" method="post">
+                  <input type="hidden" value="<%=item._id%>" name="_id">
+              <button type="submit" class="fas fa-arrow-right"></button>
+                </form>
               </span></h6>
 
               <div class="" style="font-size: 1.5rem !important;" >
                 <span style="font-size: 1.2rem !important; " id="city"><%=item.city%></span>
               </div>
           </div>
-        </a>
+      
         <% i++ %>
       <% }) %>
 
