@@ -47,7 +47,7 @@ const userSchema={
     friends:[String],
     longitude:String,
     Latitude:String,
-    interest:[String],
+    interest:String,
     city:String,
     password:String,
     accepted:[String],
@@ -180,13 +180,14 @@ app.post('/part',(req,res)=>{
         }
     })
 })
-app.post('/signup',(req,res)=>{
+app.post('/signin',(req,res)=>{
     let obj=new User({
         name:req.body.name,
         email:req.body.email,
         contact:req.body.contact,
         city:req.body.city,
-        password:req.body.password
+        password:req.body.password,
+        interest:req.body.interest
 
     })
     obj.save();
@@ -237,8 +238,7 @@ app.post('/login',(req,res)=>{
             if(data.password==password){
                 id=data._id.valueOf()
 
-                res.send("successful");
-                console.log(id);
+             res.render('home1');
             }
         }
     })
