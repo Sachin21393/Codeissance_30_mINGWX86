@@ -176,6 +176,9 @@ app.post('/part',(req,res)=>{
         }
     })
 })
+app.get('/nearEvent.ejs',(req,res)=>{
+    res.render('nearEvent')
+})
 app.post('/signin',(req,res)=>{
     let obj=new User({
         name:req.body.name,
