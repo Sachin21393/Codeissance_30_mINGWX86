@@ -148,9 +148,7 @@ app.post('/filter',(req,res)=>{
             if(er){
                 console.log(er);
             }else{
-                return res.json({
-                    src:data
-                })
+               res.render('events',{data:data,images:images})
             }
         })
 
@@ -159,9 +157,7 @@ app.post('/filter',(req,res)=>{
             if(er){
                 console.log(er);
             }else{
-                return res.json({
-                    src:data
-                })
+                res.render('events',{data:data,images:images})
             }
         })
     }
