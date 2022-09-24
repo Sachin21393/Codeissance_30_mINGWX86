@@ -56,8 +56,8 @@ padding: 10px;
 
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
+  <!-- border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px; -->
   font-size: 30px;
 
 }
@@ -93,8 +93,6 @@ padding: 10px;
   <body>
     <nav class="navbar navbar-expand-lg " style="background:black">
   <div class="container-fluid">
-
-
     <a class="navbar-brand" href="#" > <img src="logo.png" alt=""></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,11 +128,11 @@ padding: 10px;
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Nearby</button>
     </li>
-    <form class="" action="/filter" method="post" style="margin-left: 61.5%;margin-top: -3.4%;">
+    <form class="" action="index.html" method="post" style="margin-left: 61.5%;margin-top: -3.4%;">
     <div class="container alignItems" >
-      <input type="text" name="interest" class="form-control fa fa-search" value="" class="leftinput" style=" padding: 2%;" placeholder=" Search for events">
-     <input type="text" name="city" class="form-control" value="" style="padding: 2%;" placeholder="Enter location">
-     <button type="submit" name="button" style="padding:2%;"> <i class="fas fa-search" ></i></button>
+      <input type="text" name="" class="form-control fa fa-search" value="" class="leftinput" style=" padding: 2%;" placeholder=" Search for events">
+     <input type="text" name="" class="form-control" value="" style="padding: 2%;" placeholder="Enter location">
+     <button type="button" name="button" style="padding:2%;"> <i class="fas fa-search" ></i></button>
     </div>
     </form>
   </ul>
@@ -142,35 +140,124 @@ padding: 10px;
   <div class="tab-content" id="pills-tabContent" >
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
     <div class="container">
-        <div class="grid-container" style="text-decoration:none ;">
-<% let i=0 %>
-          <% data.forEach(function(item){ %>
+        <div class="grid-container">
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
 
-        <a href="<%=item.ticketinfo%>" style="text-decoration:none;" ><div class="grid-item" >
-         
-
-            <img src="<%=images[i]%>" alt="" class="image"  >
-
-
-              <h4 style="padding-top: 5%"><%=item.title%>
-
-             </h4>
-              <h6><%=item.date%>,<%=item.time%><span style="margin-left: 1%;font-size: 1.5rem">
-              </a>
-                <form action="/part" method="post">
-                  <input type="hidden" value="<%=item._id%>" name="_id">
-              <button type="submit" class="fas fa-arrow-right"></button>
-                </form>
-              </span></h6>
-
-              <div class="" style="font-size: 1.5rem !important;" >
-                <span style="font-size: 1.2rem !important; " id="city"><%=item.city%></span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
               </div>
           </div>
-      
-        <% i++ %>
-      <% }) %>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
+          <div class="grid-item">
+              <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+              <h2 style="padding-top: 5%">Title
+                 <span style="margin-left: 52%;">
+                 <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                 <span style="font-size: 1.5rem !important;"> 4.5</span>
+               </span>
+             </h2>
+              <h6>Date&Time</h6>
+              <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                <span style="font-size: 1.2rem !important;">Location</span>
+              </div>
+          </div>
 
+            <div class="grid-item">
+                <img src="https://as2.ftcdn.net/v2/jpg/03/14/06/29/1000_F_314062974_S4kglXAhjQVi3JYsAJoXcMmIqe7zwrzE.jpg" alt="" class="image"  >
+                <h2 style="padding-top: 5%">Title
+                   <span style="margin-left: 52%;">
+                   <i class="fas fa-star" style="font-size: 1.5rem !important;"></i>
+                   <span style="font-size: 1.5rem !important;"> 4.5</span>
+                 </span>
+               </h2>
+                <h6>Date&Time</h6>
+                <div class="fas fa-map-marker-alt" style="font-size: 1.5rem !important;" >
+                  <span style="font-size: 1.2rem !important;">Location</span>
+                </div>
+            </div>
 
 
 
@@ -180,7 +267,7 @@ padding: 10px;
     </div>
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
       <div class="container11">
-<iframe class="responsive-iframe" src="nearEvent.ejs" ></iframe>
+<iframe class="responsive-iframe" src="nearEvent.html" ></iframe>
 </div>
     </div>
 
@@ -189,8 +276,5 @@ padding: 10px;
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
-
   </body>
-
 </html>
